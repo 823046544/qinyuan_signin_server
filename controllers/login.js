@@ -28,9 +28,21 @@ module.exports = async (ctx, next) => {
             user_name: "",
             user_id: ""
         }
+        ctx.body = {}
+        ctx.body.user = {
+            isSignUp: 0,
+            user_name: "",
+            user_id: ""
+        }
     } else {
         // 如果找到openid，获取用户
         ctx.state.data['user'] = {
+            isSignUp: temp[0].isSignUp,
+            user_name: temp[0].user_name,
+            user_id: temp[0].user_id
+        }
+        ctx.body = {}
+        ctx.body.user = {
             isSignUp: temp[0].isSignUp,
             user_name: temp[0].user_name,
             user_id: temp[0].user_id
